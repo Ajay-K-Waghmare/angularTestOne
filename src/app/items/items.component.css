@@ -1,0 +1,13 @@
+li {
+
+    list-style-type: none;
+    height: 100px;
+}
+img{
+width: 100px;
+height: 100px;
+
+}
+ .row {
+     cursor: pointer;
+ }

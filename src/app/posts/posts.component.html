@@ -1,0 +1,29 @@
+<!-- create post -->
+<label for="userid">UserId: </label>
+<input type="text" class="form-control" name="userid" id="userid" #userid>
+
+<label for="title">Title: </label>
+<input type="text" class="form-control" name="title" id="title" #title>
+
+<button class="btn btn-primary" (click)="createPost(userid,title)" style="float:left">CreatePost</button>
+
+<!-- get posts -->
+
+<div class="posts">
+  <ul *ngFor="let post of posts">
+    <li>
+      <strong>Id:</strong> {{post.id}}
+      <br>
+      <strong>Title:</strong> {{post.title}}
+     </li>
+    <div class="text-right">
+      <!-- update post -->
+      <button class="btn btn-default" (click)="editPost(post)"><i class="fa fa-check"></i></button>
+      <!-- delete post -->
+      <button class="btn btn-default" (click)="deletePost(post)"><i class="fa fa-trash"></i></button>
+    </div>
+    <hr>
+  </ul>
+</div>
+
+<button (click)="getPosts()" class="btn1 btn btn-primary" style="float:right">GetPosts</button>

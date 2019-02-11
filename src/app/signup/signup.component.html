@@ -1,0 +1,51 @@
+<div class="container" >
+    {{details}}
+  <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm" >
+      
+    <div class="form-group">
+       <label for="uname">UserName</label>
+       <input type="text"  class="form-control" id="uname" [(ngModel)]="model.uname" name="name" #uname="ngModel" required minlength="4" maxlength="6">
+       <!-- <span *ngIf="uname.touched && !uname.valid" class="text-danger">Please enter your user name</span> -->
+       <span [hidden]="!uname.touched || uname.valid" class="text-danger">Please enter your user name</span>
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="model.name" name="name" #name="ngModel" required="false">
+   </div>
+   <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" [(ngModel)]="model.email" name="email" #email="ngModel" required 
+    pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$">
+    <small [hidden]="email.valid || email.pristine" class="text-danger"> Email is required and format should be <i>abc@test.com</i>.</small>
+ </div>
+ <div class="form-group">
+  <label for="pass">Password</label>
+  <input type="text" class="form-control" id="pass"  [(ngModel)]="model.pass" name="pass" #pass="ngModel" required>
+</div>
+<div class="form-group">
+  <label for="cpass">ConfirmPassword</label>
+  <input type="text" class="form-control" id="cpass" [(ngModel)]="model.cpass" name="cpass" #cpass="ngModel"
+        appConfirmEqualValidator="password" required>
+        <small *ngIf="cpass.touched && cpass.errors?.notEqual" class="text-danger">Password mismatch</small>
+</div>
+<div class="form-group">
+  <label for="mobno">MobNo</label>
+  <!-- <input type="text" class="form-control" id="mobno" [(ngModel)]="model.mobno" name="mobno" #mobno="ngModel" required
+  pattern="^(?:(?:\+|0{0,2})91(\s*[\ -]\s*)?|[0]?)?[789]\d{9}|(\d[ -]?){10}\d$"> -->
+  <input type="text" class="form-control" id="mobno" [(ngModel)]="model.mobno" name="mobno" #mobno="ngModel" required
+  pattern="^\d{4}-\d{3}-\d{4}$">
+  
+  
+  <small *ngIf="!mobno.valid && !mobno.pristine" class="text-danger">Please enter your 10 digit mob number</small>
+</div>
+<div class="form-group">
+  <label for="address">Address</label>
+  <input type="text" class="form-control" id="address" [(ngModel)]="model.address" name="address" #address="ngModel" required
+  data-toggle="tooltip" data-placement="top" title="Hooray!">
+</div>
+<!-- <button type="submit" class="btn btn-primary" (click)="loger(userForm)">Submit</button> -->
+<button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Submit</button>
+<pre *ngIf="uname.errors">{{ uname.errors | json }}</pre>
+
+  </form>
+</div>

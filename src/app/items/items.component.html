@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <ul class="list-group" class="container" (click)="handleClick()">
+        <li class="list-group-item">
+          <span class="badge badge-primary badge-pill">{{item.BatchNo}}</span> {{item.Name}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <img [src]="imagePath">
+    </div>
+    <div class="col-sm-2">
+      <h1>
+        Chair
+      </h1>
+    </div>
+  </div>
+</div>

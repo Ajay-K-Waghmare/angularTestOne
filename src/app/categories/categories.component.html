@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  
+   <div *ngIf="dataFromChild">
+       {{dataFromChild?.BatchNo}}  {{dataFromChild?.Name}}
+     </div>
+ 
+   <div *ngFor="let item of items">
+     <app-items [item]="item" (notify)="handleNotify($event)"></app-items>
+   </div>
+ 
+ 
+ </div>
+ 
